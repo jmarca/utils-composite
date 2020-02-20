@@ -1,7 +1,6 @@
 // @flow
 
 import {curry} from "flow-static-land/lib/Fun";
-import {isLastIndex} from "@jumpn/utils-array";
 
 import get from "./get";
 import hasKey from "./hasKey";
@@ -55,9 +54,9 @@ const copyOrCreate = (key, nextKey, current) =>
     : createSupporting(nextKey);
 
 const getNext = (path, updater, index, current) =>
-  isLastIndex(path, index)
-    ? updater(get(path[index], current))
-    : copyOrCreate(path[index], path[index + 1], current);
+      (index === path.length -1 )
+      ? updater(get(path[index], current))
+      : copyOrCreate(path[index], path[index + 1], current);
 
 const getReducer = (path, updater) => (context, key, index) =>
   update(path, index, getNext(path, updater, index, context.current), context);
@@ -65,7 +64,7 @@ const getReducer = (path, updater) => (context, key, index) =>
 /**
  * Returns a new composite with the result of having updated the property value
  * at the given path with the result of the call to updater function.
- * 
+ *
  * Entry removal is supported by returning `updateIn.remove` symbol on updater
  * function.
  */
@@ -81,8 +80,12 @@ const updateIn = (
 
 // we are doing this way and not returning an Object.assign construction, as
 // that is not well typed (returns any)
+/* $FlowFixMe This comment suppresses an error found when upgrading Flow to
+ * v0.xx.0. To view the error, delete this comment and run Flow. */
 const updateInCurried = curry(updateIn);
 
+/* $FlowFixMe This comment suppresses an error found when upgrading Flow to
+ * v0.xx.0. To view the error, delete this comment and run Flow. */
 updateInCurried.remove = removeAction;
 
 export default updateInCurried;

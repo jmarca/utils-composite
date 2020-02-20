@@ -1,8 +1,10 @@
-# @jumpn/utils-composite
+# @activimetrics/utils-composite
 
 > Composite utilities (immutability, fp helpers)
 >
 > **NOTE**: All the functions described in [API](#API) are curried
+>
+> **NOTE**: forked from jumpn/utils-composite in order to upgrade dependencies
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -31,22 +33,24 @@
     - [Parameters](#parameters-7)
   - [map](#map)
     - [Parameters](#parameters-8)
-  - [remove](#remove)
+  - [arrayRemove](#arrayremove)
     - [Parameters](#parameters-9)
-  - [removeIn](#removein)
+  - [remove](#remove)
     - [Parameters](#parameters-10)
-  - [set](#set)
+  - [removeIn](#removein)
     - [Parameters](#parameters-11)
-  - [setIn](#setin)
+  - [set](#set)
     - [Parameters](#parameters-12)
-  - [shallowCopy](#shallowcopy)
+  - [setIn](#setin)
     - [Parameters](#parameters-13)
-  - [shallowEqual](#shallowequal)
+  - [shallowCopy](#shallowcopy)
     - [Parameters](#parameters-14)
-  - [toUndefinedIfEmpty](#toundefinedifempty)
+  - [shallowEqual](#shallowequal)
     - [Parameters](#parameters-15)
-  - [updateIn](#updatein)
+  - [toUndefinedIfEmpty](#toundefinedifempty)
     - [Parameters](#parameters-16)
+  - [updateIn](#updatein)
+    - [Parameters](#parameters-17)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -55,11 +59,11 @@
 
 ### Using [npm](https://docs.npmjs.com/cli/npm)
 
-    $ npm install --save @jumpn/utils-composite
+    $ npm install --save @activimetrics/utils-composite
 
 ### Using [yarn](https://yarnpkg.com)
 
-    $ yarn add @jumpn/utils-composite
+    $ yarn add @activimetrics/utils-composite
 
 ## Types
 
@@ -173,6 +177,19 @@ Maps values of the given composite using mapper
 
 Returns **$Supertype&lt;C>** 
 
+### arrayRemove
+
+Returns a new Array with the result of having removed the specified amount
+(count) of elements at the given index.
+
+#### Parameters
+
+-   `index` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `count` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `array` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Element](https://developer.mozilla.org/docs/Web/API/Element)>** 
+
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Element](https://developer.mozilla.org/docs/Web/API/Element)>** 
+
 ### remove
 
 Returns a new composite with the result of having removed the property with
@@ -279,4 +296,4 @@ Returns **Composite**
 
 ## License
 
-[MIT](LICENSE.txt) :copyright: **Jumpn Limited** / Mauro Titimoli (mauro@jumpn.com)
+[MIT](LICENSE.txt) :copyright: 2020 **James Marca** /  (),  2017 **Jumpn Limited**

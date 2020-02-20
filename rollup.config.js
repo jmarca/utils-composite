@@ -3,10 +3,8 @@
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
 import fs from "fs";
-import pascalCase from "pascal-case";
+import {pascalCase} from "pascal-case";
 import resolve from "rollup-plugin-node-resolve";
-import uglify from "rollup-plugin-uglify";
-import {minify} from "uglify-es";
 
 import pkg from "./package.json";
 
@@ -16,8 +14,7 @@ const plugins = {
     runtimeHelpers: true
   }),
   commonjs: commonjs(),
-  resolve: resolve(),
-  uglify: uglify({}, minify)
+  resolve: resolve()
 };
 
 const dirs = {
@@ -29,11 +26,19 @@ const dirs = {
 const getCjsAndEsConfig = fileName => ({
   input: `${dirs.input}/${fileName}`,
   output: [
-    {file: `${dirs.output}/${fileName}`, format: "es"},
-    {file: `${dirs.compat}/cjs/${fileName}`, format: "cjs"}
+      {
+          file: `${dirs.output}/${fileName}`,
+          format: "es",
+          sourcemap: true
+      },
+      {
+          file: `${dirs.compat}/cjs/${fileName}`,
+          format: "cjs",
+          sourcemap: true
+      }
   ],
-  plugins: [plugins.babel, plugins.uglify],
-  sourcemap: true
+  plugins: [plugins.babel],
+
 });
 
 const sources = fs.readdirSync("src");
@@ -41,15 +46,16 @@ const sources = fs.readdirSync("src");
 const getUnscopedName = pkg => pkg.name.split("/")[1];
 
 export default [
-  {
-    input: `${dirs.input}/index.js`,
-    output: {
-      file: `${dirs.compat}/umd/index.js`,
-      format: "umd"
+    {
+        input: `${dirs.input}/index.js`,
+        output: {
+            file: `${dirs.compat}/umd/index.js`,
+            format: "umd",
+            name: pascalCase(getUnscopedName(pkg)),
+            sourcemap: true
+        },
+        plugins: [plugins.babel, plugins.resolve, plugins.commonjs, plugins.uglify],
+
     },
-    name: pascalCase(getUnscopedName(pkg)),
-    plugins: [plugins.babel, plugins.resolve, plugins.commonjs, plugins.uglify],
-    sourcemap: true
-  },
-  ...sources.map(getCjsAndEsConfig)
+    ...sources.map(getCjsAndEsConfig)
 ];

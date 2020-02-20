@@ -13,6 +13,10 @@ import type {Composite, Path} from "./types";
  * (This does the same as calling **updateIn** with updater: `() => value`)
  */
 const setIn = (path: Path, value: mixed, composite: Composite): Composite =>
+  /* $FlowFixMe This comment suppresses an error found when upgrading Flow to
+   * v0.xx.0. To view the error, delete this comment and run Flow. */
   updateIn(path, () => value, composite);
 
+/* $FlowFixMe This comment suppresses an error found when upgrading Flow to
+ * v0.xx.0. To view the error, delete this comment and run Flow. */
 export default curry(setIn);

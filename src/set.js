@@ -18,4 +18,6 @@ const set = (key: Key, value: mixed, composite: Composite): Composite => {
   return copy;
 };
 
+/* $FlowFixMe This comment suppresses an error found when upgrading Flow to
+ * v0.xx.0. To view the error, delete this comment and run Flow. */
 export default curry(set);

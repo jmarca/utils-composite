@@ -14,4 +14,6 @@ import type {Composite, Path} from "./types";
 const hasIn = (path: Path, value: mixed, composite: Composite): boolean =>
   isDeepEqual(getIn(path, composite), value);
 
+/* $FlowFixMe This comment suppresses an error found when upgrading Flow to
+ * v0.xx.0. To view the error, delete this comment and run Flow. */
 export default curry(hasIn);

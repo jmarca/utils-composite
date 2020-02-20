@@ -11,4 +11,6 @@ import type {Composite, Key} from "./types";
 const hasKey = (key: Key, composite: Composite): boolean =>
   Object.prototype.hasOwnProperty.call(composite, key);
 
+/* $FlowFixMe This comment suppresses an error found when upgrading Flow to
+ * v0.xx.0. To view the error, delete this comment and run Flow. */
 export default curry(hasKey);

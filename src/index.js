@@ -1,6 +1,6 @@
 // @flow
 
-/* ::
+/*::
 export * from "./types";
 */
 

@@ -1,8 +1,14 @@
 {
-  "plugins": ["transform-runtime"],
+  "plugins": [
+      "@babel/plugin-transform-runtime",
+      "@babel/plugin-proposal-class-properties",
+      ["@babel/plugin-transform-arrow-functions", { "spec": false }]
+  ],
   "presets": [
-    "flow",
-    "stage-0",
-    ["env", {"modules": false, "spec": true, "useBuiltIns": true}]
+    [
+      "@babel/preset-env",
+        {"targets": "> 0.25%, not dead, last 1 version"}
+    ],
+    "@babel/preset-flow",
   ]
 }

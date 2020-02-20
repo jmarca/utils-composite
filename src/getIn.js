@@ -1,7 +1,6 @@
 // @flow
 
 import {curry} from "flow-static-land/lib/Fun";
-import {isLastIndex} from "@jumpn/utils-array";
 
 import get from "./get";
 import isComposite from "./is";
@@ -9,7 +8,7 @@ import isComposite from "./is";
 import type {Composite, Path} from "./types";
 
 const getInIfNeeded = (index, path, value) =>
-  isLastIndex(path, index) ? value : getInRecur(index + 1, path, value);
+      (index === path.length - 1) ? value : getInRecur(index + 1, path, value);
 
 const getNotCompositeErrorMessage = (index, path, maybeComposite) =>
   `Expected to find a composite at [${path.join(", ")}][${index}], ` +
@@ -36,4 +35,6 @@ const getInRecur = (index, path, maybeComposite) =>
 const getIn = (path: Path, composite: Composite): any =>
   path.length === 0 ? undefined : getInRecur(0, path, composite);
 
+/* $FlowFixMe This comment suppresses an error found when upgrading Flow to
+ * v0.xx.0. To view the error, delete this comment and run Flow. */
 export default curry(getIn);
