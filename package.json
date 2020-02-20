@@ -90,7 +90,6 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.4",
-    "uglify": "^0.1.5",
     "uglify-es": "^3.3.9",
     "zen-observable": "^0.8.15"
   }
