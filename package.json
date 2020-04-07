@@ -17,7 +17,6 @@
     "lint": "eslint --rule 'flowtype-errors/show-errors: error'",
     "lint:fix": "npm run lint --fix",
     "npm:publish": "np",
-    "precommit": "lint-staged",
     "version": "npm run build:index && npm run build:readme && git add README.md src/index.js",
     "prepack": "npm run build:clean && npm run build:src && npm run build:flow"
   },
@@ -92,5 +91,10 @@
     "rollup-plugin-uglify": "^6.0.4",
     "uglify-es": "^3.3.9",
     "zen-observable": "^0.8.15"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
