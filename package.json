@@ -51,7 +51,7 @@
   "dependencies": {
     "@babel/runtime": "7.9.2",
     "babel-polyfill": "6.26.0",
-    "fast-deep-equal": "1.0.0",
+    "fast-deep-equal": "1.1.0",
     "flow-static-land": "0.2.8"
   },
   "devDependencies": {
