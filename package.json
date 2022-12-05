@@ -79,7 +79,7 @@
     "flow-copy-source": "^2.0.9",
     "flow-typed": "^3.1.0",
     "husky": "1.2.0",
-    "lint-staged": "8.1.0",
+    "lint-staged": "13.1.0",
     "np": "2.16.1",
     "pascal-case": "^3.1.1",
     "pkg-to-readme": "^1.1.0",
